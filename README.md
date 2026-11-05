@@ -1,7 +1,7 @@
 # SubSensei ｜ 字幕老師
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.0.3-green.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.1.0-green.svg)](CHANGELOG.md)
 [![Languages](https://img.shields.io/badge/languages-14-orange.svg)](#字幕語言)
 [![Platforms](https://img.shields.io/badge/platforms-PC%20%7C%20iOS%20%7C%20Android-blue.svg)](#平台支援)
 

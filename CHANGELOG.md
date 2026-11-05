@@ -64,6 +64,79 @@
 
 ---
 
+## v1.1.0 — 2026-11-06
+
+### 新增
+- **邀請碼兌換系統**
+  - KOL 推廣用：派發邀請碼讓粉絲免費體驗，兌換後獲得指定天數會員
+  - 升級彈窗底部新增「有邀請碼？」輸入框與兌換按鈕，支援 Enter 鍵
+  - 兌換成功後即時更新面板狀態（免費 3 次／日 → 會員 100 次／日）
+  - 錯誤訊息完整中英雙語，並涵蓋全部失敗情境
+
+### 後端（PB Cloud）
+
+新增兩個 collection：
+
+| Collection | 用途 |
+|---|---|
+| `invite_codes` | 邀請碼定義（code / label / duration_days / max_uses / used_count / expires_at / is_active / note）|
+| `invite_redemptions` | 兌換記錄（code / user / user_email / duration_days / paid_until_before / paid_until_after / ip）|
+
+新增 hook `invite_redeem.pb.js`：
+
+```
+POST /api/invite-redeem
+Authorization: <user token>
+Body: { "code": "MIKO-2026" }
+```
+
+錯誤碼：`unauthenticated` / `missing_code` / `invalid_code` / `not_found` /
+`inactive` / `expired` / `exhausted` / `already_redeemed` / `user_limit`
+
+### 設計決策
+
+- **天數制而非固定到期日**：從兌換當刻起算，越晚兌換的人不會吃虧
+- **不降級**：`paid_until` 取 `max(現有值, now + duration)`，終身會員兌換不會被降級
+- **每人每個碼限 1 次**，每人總共限 2 次，防止收集大量邀請碼疊加
+- **Goja 單執行緒**：檢查與扣減之間無需加鎖，`used_count` 不會超賣
+
+### PB Cloud Goja 踩坑記錄
+
+`$app.countRecords(..., 'user = {:uid}', ..., { uid: id })` 對 relation 欄位查不到，
+導致重複兌換未被攔截。必須改用字串拼接：
+
+```javascript
+var dupFilter = "code = \"" + code + "\" && user.id = \"" + authId + "\"";
+var dupFound = $app.findRecordsByFilter("invite_redemptions", dupFilter, "", 1, 0);
+```
+
+與 `subtitle_file_route.pb.js` 對 `access_logs.user.id` 的寫法一致。
+
+### 驗證
+
+後端 9 個情境全部通過：
+
+| 測試 | 結果 |
+|---|---|
+| 有效兌換 | 200，`paid_until` 正確 |
+| 重複兌換同一碼 | 400 `already_redeemed` |
+| 兌換第 2 個碼 | 200（每人總共 2 次內）|
+| 兌換第 3 個碼 | 400 `user_limit` |
+| 名額用完 | 410 `exhausted` |
+| 已停用碼 | 410 `inactive` |
+| 無效碼 | 404 `not_found` |
+| 空碼 | 400 `missing_code` |
+| 未登入 | 401 `unauthenticated` |
+
+端到端（瀏覽器）：canary-free 帳號輸入 `WELCOME-2026`，
+面板由「(免費會員) 今日 0/3」變成「(會員) 今日 0/100」，
+兌換記錄寫入成功，`used_count` 由 0 變 1。
+
+node --check：PASS
+5 站模擬 IIFE 載入：全部 PASS
+
+---
+
 ## v1.0.3 — 2026-11-05
 
 ### 修正

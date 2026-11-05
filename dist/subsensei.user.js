@@ -4,7 +4,7 @@
 // @name:zh-TW   字幕老師
 // @name:zh-HK   字幕老師
 // @namespace    https://github.com/neo2codes/subsensei
-// @version      1.0.3
+// @version      1.1.0
 // @description  SubSensei -- automatic subtitle loading in 14 languages, appearance and picture controls, hotkeys, and a draggable panel for MissAV, Jable, fs1.app and AV01.
 // @description:zh-CN 字幕老师 —— 为 MissAV、Jable、fs1.app 与 AV01 提供 14 种语言字幕自动加载、字幕样式调节、画面调节、快捷键控制与可拖拽面板，兼容 Safari Userscripts 与 Tampermonkey。
 // @description:zh-TW 字幕老師 —— 為 MissAV、Jable、fs1.app 與 AV01 提供 14 種語言字幕自動載入、字幕樣式調節、畫面調節、快捷鍵控制與可拖曳面板，相容 Safari Userscripts 與 Tampermonkey。
@@ -43,7 +43,7 @@
 
 // ==/UserScript==
 
-/* v1.0.3  |  完整版本記錄：https://github.com/neo2codes/subsensei/blob/main/CHANGELOG.md */
+/* v1.1.0  |  完整版本記錄：https://github.com/neo2codes/subsensei/blob/main/CHANGELOG.md */
 
 (function () {
 
@@ -60,13 +60,13 @@
     const APP_VERSION = (function () {
         try {
             if (typeof GM_info !== 'undefined' && GM_info.script) {
-                return GM_info.script.version || '1.0.3';
+                return GM_info.script.version || '1.1.0';
             }
             if (typeof GM !== 'undefined' && GM.info && GM.info.script) {
-                return GM.info.script.version || '1.0.3';
+                return GM.info.script.version || '1.1.0';
             }
         } catch (e) {}
-        return '1.0.3';
+        return '1.1.0';
     })();
 
     'use strict';
@@ -362,6 +362,15 @@
             'upgrade.notAvailable': '（未取得）',
             'upgrade.notOpen': '此方案尚未開放',
             'upgrade.title': '支持字幕補完計劃',
+            'invite.label': '有邀請碼？',
+            'invite.placeholder': '輸入邀請碼',
+            'invite.button': '兌換',
+            'invite.busy': '兌換中…',
+            'invite.success': '✅ 兌換成功！獲得 {days} 天會員，到期日 {date}。',
+            'invite.needLogin': '請先登入再兌換邀請碼。',
+            'invite.empty': '請輸入邀請碼。',
+            'invite.network': '連線失敗，請稍後再試。',
+            'invite.badResponse': '伺服器回應格式不正確。',
         },
         'en': {
             'app.name': 'SubSensei',
@@ -514,6 +523,15 @@
             'upgrade.notAvailable': '(Not available)',
             'upgrade.notOpen': 'This option is not yet available.',
             'upgrade.title': 'Support the Subtitle Completion Project',
+            'invite.label': 'Have an invite code?',
+            'invite.placeholder': 'Enter invite code',
+            'invite.button': 'Redeem',
+            'invite.busy': 'Redeeming...',
+            'invite.success': '✅ Redeemed! {days} days of membership added, valid until {date}.',
+            'invite.needLogin': 'Please log in first to redeem an invite code.',
+            'invite.empty': 'Please enter an invite code.',
+            'invite.network': 'Connection failed. Please try again later.',
+            'invite.badResponse': 'Unexpected server response.',
         },
     };
 
@@ -1234,6 +1252,74 @@
             color: var(--ms-accent);
             cursor: pointer;
             text-decoration: underline;
+        }
+        /* v1.1.0: 邀請碼兌換區塊 */
+        .auth-modal .invite-block {
+            margin: 14px 0 10px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.10);
+        }
+        .auth-modal .invite-label {
+            font-size: 12px;
+            color: var(--ms-text-muted);
+            margin-bottom: 6px;
+        }
+        .auth-modal .invite-row {
+            display: flex;
+            gap: 8px;
+        }
+        .auth-modal .invite-input {
+            flex: 1;
+            min-width: 0;
+            background: rgba(0,0,0,0.30);
+            border: 1px solid rgba(255,255,255,0.16);
+            border-radius: 8px;
+            color: var(--ms-text);
+            font-size: 13px;
+            padding: 8px 10px;
+            outline: none;
+            text-transform: uppercase;
+        }
+        .auth-modal .invite-input::placeholder {
+            text-transform: none;
+            color: rgba(255,255,255,0.32);
+        }
+        .auth-modal .invite-input:focus {
+            border-color: var(--ms-accent);
+        }
+        .auth-modal .invite-input:disabled {
+            opacity: 0.55;
+        }
+        .auth-modal .invite-btn {
+            flex: 0 0 auto;
+            background: var(--ms-accent);
+            border: 1px solid var(--ms-accent);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 16px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .auth-modal .invite-btn:disabled {
+            opacity: 0.55;
+            cursor: default;
+        }
+        .auth-modal .invite-msg {
+            font-size: 12px;
+            line-height: 1.5;
+            margin-top: 8px;
+            min-height: 0;
+        }
+        .auth-modal .invite-msg.ok {
+            color: #3fb950;
+        }
+        .auth-modal .invite-msg.err {
+            color: #e5484d;
+        }
+        .auth-modal .invite-msg.busy {
+            color: var(--ms-text-muted);
         }
         .auth-modal .auth-close {
             position: absolute;
@@ -2898,6 +2984,16 @@
                             <span class="plan-price">${p.price}</span>
                         </button>
                     `).join('')}
+                    <div class="invite-block">
+                        <div class="invite-label">${t('invite.label')}</div>
+                        <div class="invite-row">
+                            <input type="text" class="invite-input" id="invite-code-input"
+                                   placeholder="${t('invite.placeholder')}"
+                                   autocomplete="off" spellcheck="false" maxlength="40">
+                            <button type="button" class="invite-btn" id="invite-redeem-btn">${t('invite.button')}</button>
+                        </div>
+                        <div class="invite-msg" id="invite-msg"></div>
+                    </div>
                     <div class="auth-toggle">
                         <span id="upgrade-cancel" style="cursor:pointer;color:#8af">${t('btn.cancel')}</span>
                     </div>
@@ -2930,6 +3026,123 @@
                 if (!checkoutUrl) { showToast(t('upgrade.notOpen'), 4000); return; }
                 showFounderConfirm(checkoutUrl);
             });
+        });
+
+        // v1.1.0: 邀請碼兌換
+        setupInviteRedeem(overlay);
+    }
+
+    /**
+     * v1.1.0: 綁定邀請碼輸入框與兌換按鈕。
+     *
+     * 兌換成功後：
+     *   · 更新本地 pbUser / pbUserPlan
+     *   · 重畫面板（顯示會員額度）
+     *   · 重新同步伺服器配額
+     *   · 2.5 秒後關閉彈窗
+     */
+    function setupInviteRedeem(overlay) {
+        var input = overlay.querySelector('#invite-code-input');
+        var btn = overlay.querySelector('#invite-redeem-btn');
+        var msg = overlay.querySelector('#invite-msg');
+        if (!input || !btn || !msg) return;
+
+        function setMsg(text, cls) {
+            msg.className = 'invite-msg ' + (cls || '');
+            msg.textContent = text || '';
+        }
+
+        function setBusy(busy) {
+            input.disabled = busy;
+            btn.disabled = busy;
+            btn.textContent = busy ? t('invite.busy') : t('invite.button');
+        }
+
+        async function doRedeem() {
+            if (!pbAuthToken || !pbUser || !pbUser.id) {
+                setMsg(t('invite.needLogin'), 'err');
+                return;
+            }
+
+            var code = (input.value || '').trim();
+            if (!code) {
+                setMsg(t('invite.empty'), 'err');
+                input.focus();
+                return;
+            }
+
+            setBusy(true);
+            setMsg(t('invite.busy'), 'busy');
+
+            try {
+                var resp = await gmRequest({
+                    method: 'POST',
+                    url: PB_URL + '/api/invite-redeem',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': pbAuthToken
+                    },
+                    data: JSON.stringify({ code: code })
+                });
+
+                var data = null;
+                try {
+                    data = JSON.parse(resp.responseText);
+                } catch (eParse) {
+                    data = null;
+                }
+
+                if (resp.status >= 200 && resp.status < 300 && data && data.ok) {
+                    // 更新本地狀態
+                    var days = data.duration_days || 30;
+                    var until = data.paid_until || '';
+                    var dateStr = until ? until.substring(0, 10) : '';
+
+                    if (pbUser) {
+                        pbUser.plan = 'member';
+                        pbUser.paid_until = until;
+                        try { localStorage.setItem('missavPbUser', JSON.stringify(pbUser)); } catch (eLs) {}
+                    }
+                    pbUserPlan = 'member';
+                    todayFetchCount = 0;
+
+                    setMsg(t('invite.success', { days: days, date: dateStr }), 'ok');
+                    setBusy(false);
+                    btn.disabled = true;
+
+                    showToast(t('invite.success', { days: days, date: dateStr }), 5000);
+
+                    // 重畫面板上的狀態
+                    try { updateAuthUI(); } catch (eUi) {}
+
+                    // 重新同步配額
+                    setTimeout(function () {
+                        try { syncQuotaFromServer(); } catch (eSync) {}
+                    }, 300);
+
+                    // 關閉彈窗
+                    setTimeout(function () {
+                        if (overlay && overlay.parentNode) overlay.remove();
+                    }, 2500);
+                } else {
+                    var errMsg = '';
+                    if (data && data.message) errMsg = data.message;
+                    if (!errMsg) errMsg = t('invite.badResponse');
+                    setMsg(errMsg, 'err');
+                    setBusy(false);
+                }
+            } catch (errNet) {
+                setMsg(t('invite.network'), 'err');
+                setBusy(false);
+            }
+        }
+
+        btn.addEventListener('click', doRedeem);
+        input.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                doRedeem();
+            }
         });
     }
 
