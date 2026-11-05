@@ -1,0 +1,26 @@
+# 依賴
+node_modules/
+
+# 系統檔案
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 編輯器
+.vscode/
+.idea/
+*.swp
+*~
+
+# 日誌
+*.log
+
+# 本地環境
+.env
+.env.local
+
+# 暫存
+*.tmp
+*.bak
+tmp/
+temp/

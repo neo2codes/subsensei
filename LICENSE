@@ -1,0 +1,74 @@
+MIT License
+
+Copyright (c) 2026 neo2codes
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## NOTICE — Scope of this license
+
+**This MIT license covers the SubSensei userscript source code only.**
+
+The following are NOT covered by this license:
+
+1. **The Subtitle Instrumentality Project (SIP) database.**
+   All SRT files, translations, subtitle metadata, and the corresponding
+   entries stored on the hosted backend remain the exclusive property of
+   the author. They may not be reproduced, redistributed, bulk-downloaded,
+   re-uploaded, or used to build a competing service.
+
+2. **The hosted backend service.**
+   The PocketBase instance, its schema, server-side hooks
+   (`bmc_webhook.pb.js`, `server_quota.pb.js`, `subtitle_file_route.pb.js`),
+   credentials, and any associated infrastructure are private and are not
+   part of this repository.
+
+3. **The brand and marks.**
+   "SubSensei", "字幕老師", "Subtitle Instrumentality Project", "SIP",
+   "字幕補完計劃" and associated logos may not be used to endorse or promote
+   derivative works without prior written permission.
+
+If you fork or redistribute the userscript, please run it against your own
+backend — the author's hosted service (and its subtitle library) is not
+provided for third-party use.
+
+---
+
+## 中文說明（Chinese summary）
+
+本 MIT 授權**只覆蓋 SubSensei 的 userscript 原始碼**。
+
+**不包括**：
+
+1. **字幕補完計劃資料庫（Subtitle Instrumentality Project，SIP）** ——
+   所有 SRT 檔案、翻譯內容、字幕 metadata，以及存放在托管後端上的記錄，
+   均屬作者專有，不得複製、轉發、批量下載、重新上傳，或用於建立競品服務。
+
+2. **托管後端服務** ——
+   PocketBase 實例、schema、server-side hooks、憑證及相關基礎設施，
+   屬私有部分，不在本 repo 範圍內。
+
+3. **品牌標識** ——
+   「SubSensei」、「字幕老師」、「Subtitle Instrumentality Project」、
+   「SIP」、「字幕補完計劃」及相關標誌，
+   未經書面許可不得用於衍生作品的背書或推廣。
+
+如你 fork 或轉發本 userscript，請自行架設後端 ——
+作者的托管服務（及其字幕庫）並不對第三方開放。
