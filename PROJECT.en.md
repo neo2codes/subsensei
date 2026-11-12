@@ -27,21 +27,21 @@ ongoing subtitle-library construction project.
 
 | Language | Subtitles | Status |
 |---|---|---|
-| 🇭🇰 Cantonese | **81,443** | ✅ Primary |
-| 🇹🇼 Traditional Chinese | **17,882** | ✅ Primary |
-| 🇨🇳 Simplified Chinese | **3,529** | ✅ Complete |
-| 🇬🇧 English | **10,987** | ✅ Complete |
-| 🇰🇷 Korean | 3,079 | 🔄 In progress |
+| 🇭🇰 Cantonese | **81,834** | ✅ Primary |
+| 🇹🇼 Traditional Chinese | **81,234** | ✅ Primary |
+| 🇨🇳 Simplified Chinese | **81,234** | ✅ Complete |
+| 🇬🇧 English | **39,385** | ✅ Complete |
+| 🇰🇷 Korean | 3,907 | ✅ Complete |
 | 🇲🇾 Malay | 187 | 🔄 In progress |
-| 🇹🇭 Thai | 3,295 | 🔄 In progress |
-| 🇻🇳 Vietnamese | 226 | 🔄 In progress |
+| 🇹🇭 Thai | 3,907 | ✅ Complete |
+| 🇻🇳 Vietnamese | 3,907 | ✅ Complete |
 | 🇮🇩 Indonesian | 187 | 🔄 In progress |
-| 🇵🇭 Filipino | 226 | 🔄 In progress |
-| 🇩🇪 German | 226 | 🔄 In progress |
-| 🇫🇷 French | 226 | 🔄 In progress |
-| 🇧🇷 Portuguese | 226 | 🔄 In progress |
-| 🇷🇺 Russian | 3,295 | 🔄 In progress |
-| **Total** | **125,014** | |
+| 🇵🇭 Filipino | 3,907 | ✅ Complete |
+| 🇩🇪 German | 3,907 | ✅ Complete |
+| 🇫🇷 French | 3,907 | ✅ Complete |
+| 🇧🇷 Portuguese | 3,907 | ✅ Complete |
+| 🇷🇺 Russian | 3,907 | ✅ Complete |
+| **Total** | **315,317** | |
 
 ### Technical architecture
 
@@ -82,8 +82,8 @@ Read by users through SubSensei
 |---|---|
 | Cantonese library: 81,443 subtitles | 2026-11 |
 | Traditional Chinese: 17,882 subtitles | 2026-11 |
-| Simplified Chinese: 3,529 subtitles | 2026-11 |
-| English: 10,987 subtitles | 2026-11 |
+| Simplified Chinese: 17,882 subtitles | 2026-11 |
+| English: 17,882 subtitles | 2026-11 |
 | SubSensei v1.0.0 (13 domains + 14 languages) | 2026-10-31 |
 | BMC payment system live (real-card test passed) | 2026-10-23 |
 
@@ -97,7 +97,7 @@ Read by users through SubSensei
 |---|---|
 | **GPU electricity** | Translating 494 hours of audio needs roughly 50-100 GPU hours |
 | **PocketBase Cloud** | Monthly server fee |
-| **Storage** | 125,014 subtitles ≈ 3.9 GB (still growing) |
+| **Storage** | 315,317 subtitles ≈ 9.8 GB (still growing) |
 | **Development time** | Ongoing maintenance and new features |
 
 ### How to support
@@ -162,7 +162,7 @@ features are identical.
 
 ### Q: When will the library be finished?
 
-**It is an ongoing effort.** There are currently 125,014 subtitles, mainly in Cantonese,
+**It is an ongoing effort.** There are currently 315,317 subtitles, mainly in Cantonese,
 Traditional Chinese, Simplified Chinese, and English; the other 10 languages are expanding.
 
 ### Q: Can I request subtitles for a specific video?
@@ -211,7 +211,7 @@ few cues (e.g. a two-hour video with a single line), not a translation problem.
 
 **PocketBase Cloud** (Singapore)
 
-- `subtitles` — 125,014 records
+- `subtitles` — 315,317 records
 - `users` — accounts
 - `tip_events` — payment records
 - `tip_accumulator` — donation totals
