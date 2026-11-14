@@ -27,21 +27,21 @@ ongoing subtitle-library construction project.
 
 | Language | Subtitles | Status |
 |---|---|---|
-| 🇭🇰 Cantonese | **81,834** | ✅ Primary |
-| 🇹🇼 Traditional Chinese | **81,234** | ✅ Primary |
-| 🇨🇳 Simplified Chinese | **81,234** | ✅ Complete |
-| 🇬🇧 English | **39,385** | ✅ Complete |
-| 🇰🇷 Korean | 3,907 | ✅ Complete |
+| 🇭🇰 Cantonese | **81,931** | ✅ Primary |
+| 🇹🇼 Traditional Chinese | **81,331** | ✅ Primary |
+| 🇨🇳 Simplified Chinese | **81,331** | ✅ Complete |
+| 🇬🇧 English | **39,482** | ✅ Complete |
+| 🇰🇷 Korean | 4,004 | ✅ Complete |
 | 🇲🇾 Malay | 187 | 🔄 In progress |
-| 🇹🇭 Thai | 3,907 | ✅ Complete |
-| 🇻🇳 Vietnamese | 3,907 | ✅ Complete |
+| 🇹🇭 Thai | 4,004 | ✅ Complete |
+| 🇻🇳 Vietnamese | 4,004 | ✅ Complete |
 | 🇮🇩 Indonesian | 187 | 🔄 In progress |
-| 🇵🇭 Filipino | 3,907 | ✅ Complete |
-| 🇩🇪 German | 3,907 | ✅ Complete |
-| 🇫🇷 French | 3,907 | ✅ Complete |
-| 🇧🇷 Portuguese | 3,907 | ✅ Complete |
-| 🇷🇺 Russian | 3,907 | ✅ Complete |
-| **Total** | **315,317** | |
+| 🇵🇭 Filipino | 4,004 | ✅ Complete |
+| 🇩🇪 German | 4,004 | ✅ Complete |
+| 🇫🇷 French | 4,004 | ✅ Complete |
+| 🇧🇷 Portuguese | 4,004 | ✅ Complete |
+| 🇷🇺 Russian | 4,004 | ✅ Complete |
+| **Total** | **316,481** | |
 
 ### Technical architecture
 
@@ -97,7 +97,7 @@ Read by users through SubSensei
 |---|---|
 | **GPU electricity** | Translating 494 hours of audio needs roughly 50-100 GPU hours |
 | **PocketBase Cloud** | Monthly server fee |
-| **Storage** | 315,317 subtitles ≈ 9.8 GB (still growing) |
+| **Storage** | 316,481 subtitles ≈ 9.9 GB (still growing) |
 | **Development time** | Ongoing maintenance and new features |
 
 ### How to support
@@ -162,7 +162,7 @@ features are identical.
 
 ### Q: When will the library be finished?
 
-**It is an ongoing effort.** There are currently 315,317 subtitles, mainly in Cantonese,
+**It is an ongoing effort.** There are currently 316,481 subtitles, mainly in Cantonese,
 Traditional Chinese, Simplified Chinese, and English; the other 10 languages are expanding.
 
 ### Q: Can I request subtitles for a specific video?
@@ -211,7 +211,7 @@ few cues (e.g. a two-hour video with a single line), not a translation problem.
 
 **PocketBase Cloud** (Singapore)
 
-- `subtitles` — 315,317 records
+- `subtitles` — 316,481 records
 - `users` — accounts
 - `tip_events` — payment records
 - `tip_accumulator` — donation totals

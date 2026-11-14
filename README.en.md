@@ -16,7 +16,7 @@
 [**Subtitle Instrumentality Project (SIP) ｜ 字幕補完計劃**](PROJECT.md).
 
 Goal: **Build a complete multilingual subtitle library for JAV.**
-Current: **315,317 subtitles across 14 languages, still growing.**
+Current: **316,481 subtitles across 14 languages, still growing.**
 
 **Supported platforms: 🖥️ Desktop (Windows / macOS / Linux) · 📱 iOS · 🤖 Android**
 
@@ -274,20 +274,20 @@ These subtitles can still be loaded, but the viewing experience is weaker. If yo
 
 | Language | Available subtitles |
 |---|---|
-| 🇭🇰 **Cantonese** | 81,834 |
-| 🇹🇼 **Traditional Chinese** | 81,234 |
-| 🇨🇳 **Simplified Chinese** | 81,234 |
-| 🇬🇧 English | 39,385 |
-| 🇰🇷 Korean | 3,907 |
+| 🇭🇰 **Cantonese** | 81,931 |
+| 🇹🇼 **Traditional Chinese** | 81,331 |
+| 🇨🇳 **Simplified Chinese** | 81,331 |
+| 🇬🇧 English | 39,482 |
+| 🇰🇷 Korean | 4,004 |
 | 🇲🇾 Malay | 187 |
-| 🇹🇭 Thai | 3,907 |
-| 🇻🇳 Vietnamese | 3,907 |
+| 🇹🇭 Thai | 4,004 |
+| 🇻🇳 Vietnamese | 4,004 |
 | 🇮🇩 Indonesian | 187 |
-| 🇵🇭 Filipino | 3,907 |
-| 🇩🇪 German | 3,907 |
-| 🇫🇷 French | 3,907 |
-| 🇧🇷 Portuguese | 3,907 |
-| 🇷🇺 Russian | 3,907 |
+| 🇵🇭 Filipino | 4,004 |
+| 🇩🇪 German | 4,004 |
+| 🇫🇷 French | 4,004 |
+| 🇧🇷 Portuguese | 4,004 |
+| 🇷🇺 Russian | 4,004 |
 
 **The other 10 languages are still being expanded** (see the roadmap in [PROJECT.md](PROJECT.md)).
 
