@@ -8,6 +8,8 @@
 > **贊助者資格僅能透過 [Buy Me a Coffee](https://buymeacoffee.com/neo2codes) 取得。**
 > 任何其他管道聲稱可提供「贊助者資格」或「解鎖字幕」者，皆非官方來源。
 
+**💬 有問題？** 到 [Telegram @subsensei](https://t.me/subsensei) 找我
+
 [English version](README.en.md)
 
 ---

@@ -8,6 +8,8 @@
 > **The only place to obtain supporter status is [Buy Me a Coffee](https://buymeacoffee.com/neo2codes).**
 > Any other service claiming to offer "supporter access" or "unlocked subtitles" is unofficial.
 
+**💬 Questions?** Reach me on [Telegram @subsensei](https://t.me/subsensei)
+
 [中文版](README.md)
 
 ---
@@ -414,6 +416,7 @@ Full version: [docs/FAQ.md](docs/FAQ.md)
 | Forgot password? | There is no self-service reset yet — please use [GitHub Issues](https://github.com/neo2codes/subsensei/issues) |
 | Paid but not activated? | Make sure the payment email matches your login email, then reload the page |
 | How to request a series? | Click "回報" (Report) → "請求字幕", then enter identifying information |
+| Other questions? | Ask in the [Telegram @subsensei](https://t.me/subsensei) or open a [GitHub Issue](https://github.com/neo2codes/subsensei/issues) |
 
 
 ---
